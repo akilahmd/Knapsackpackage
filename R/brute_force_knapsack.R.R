@@ -47,3 +47,4 @@ brute_force_knapsack <- function(X, W){
  
   return(list(value=round(optimum_value),elements=selected_items))
 }
+#trial to github

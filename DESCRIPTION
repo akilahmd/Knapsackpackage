@@ -1,11 +1,13 @@
 Package: Knapsackpackage
 Type: Package
-Title: What the package does (short line)
+Title: Takes a vector of values and weights and also a maximum limit of weight that a scak can hold
 Version: 1.0
 Date: 2016-10-06
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Author: Aqeel and Merhawi
+Maintainer: <|merge269@liu.se>
+Description: there are three functions in this package, each of the gave the same out put but in different time of excution
+             the input is a combiation of twovectors of which one is the values of items and the second vector is thier respectivewieghts
+             the second argument is a scalar, which is the maximum limit which the sack can hold.
 License: What license is it under?
 RoxygenNote: 5.0.1
 Suggests: testthat,

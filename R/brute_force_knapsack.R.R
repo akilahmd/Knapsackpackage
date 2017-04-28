@@ -17,26 +17,34 @@
 
 brute_force_knapsack <- function(X, W){
   stopifnot(is.data.frame(X),is.numeric(W))
-  a1<-as.vector(X[,1])
-  b1<-as.vector(X[,2])
-  n = length(a1)
-  aa<-c(1:n)
+  i=2
   optimum_value = 0     
-  selected_items = c()     
-  v<-combn(b1,2)
-  w<-combn(a1,2)
-  aaw<-t(combn(aa,2))
-  v<-t(v)
-  w<-t(w)
-  sumw<-rowSums(w)
-  sumv<-rowSums(v)
-  r<-which(sumw<=W)
-  values<-sumv[r]
+  selected_items = c()
+  weights<-c()
+  values<-c()
+  while(i<=nrow(X))
+  {
+  w<-as.data.frame(combn(X[,1], i))
+  v<-as.data.frame(combn(X[,2], i))
+  sumw<-colSums(w)
+  sumv<-colSums(v)
+  weights<-which(sumw<=W)
+  if(length(weights) != 0){ 
+  values<-sumv[weights]
   optimum_value<-max(values)
-  bb<-which(sumv==optimum_value)
-  bb<-aaw[bb,]
-  value<-round(optimum_value)
-  
-  return(list(value=value, elements=bb))
-  
+  temp<-which((values)==optimum_value)
+  maxValWghtIdx<-weights[temp]
+  maxValWght<-w[, maxValWghtIdx]
+  j<-1
+  while (j<=i){
+    selected_items[j]<-which(X[,1]==maxValWght[j])
+    j=j+1
+  }
+  }
+  i=i+1
+ 
+  }
+ 
+  return(list(value=round(optimum_value),elements=selected_items))
 }
+#trial to github
